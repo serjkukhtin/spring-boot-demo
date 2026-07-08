@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: "spring-boot-demo"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: myuser
+    password: mypassword
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
