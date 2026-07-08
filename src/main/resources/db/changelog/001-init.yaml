@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-members
+      author: skuhtin
+      changes:
+        - createTable:
+            tableName: members
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 002-seed-members
+      author: skuhtin
+      changes:
+        - insert:
+            tableName: members
+            columns:
+              - column: { name: username, value: "john_doe" }
+              - column: { name: created_at, valueDate: "2024-01-01T00:00:00" }
+        - insert:
+            tableName: members
+            columns:
+              - column: { name: username, value: "jane_doe" }
+              - column: { name: created_at, valueDate: "2024-01-02T00:00:00" }
